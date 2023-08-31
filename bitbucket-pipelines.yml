@@ -1,0 +1,19 @@
+image:
+  name: atlassian/default-image:2
+  run-as-user: 0
+
+definitions:
+  services:
+    docker:
+      memory: 2048
+pipelines:
+  tags:
+    stg-runner-*:
+      - step:
+          size: 2x
+          runs-on:
+            - linux
+          name: Automate Runner
+          deployment: production
+          services:
+            - docker
